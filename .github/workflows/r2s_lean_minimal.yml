@@ -1,12 +1,25 @@
 name: r2s Lean版openwrt minimal
 
+#on:
+#push:
+#branches: [ master ]
+#paths:
+#      - '.github/workflows/r2s_lean_minimal.yml'
+#  schedule:
+#    - cron: '10 08 * * *'
+
 on:
-  push:
-    branches: [ master ]
+  repository_dispatch:
+  workflow_dispatch:
     paths:
-      - '.github/workflows/r2s_lean_minimal.yml'
-  schedule:
-    - cron: '10 08 * * *'
+    - '.github/workflows/r2s_lean_minimal.yml'
+
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+
 
 jobs:
 

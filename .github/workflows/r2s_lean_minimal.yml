@@ -1,31 +1,31 @@
 name: r2s Lean版openwrt minimal
 
-#on:
-#push:
-#branches: [ master ]
-#paths:
-#      - '.github/workflows/r2s_lean_minimal.yml'
-#  schedule:
-#    - cron: '10 08 * * *'
-
 on:
-  repository_dispatch:
-  workflow_dispatch:
+  push:
+    branches: [ master ]
     paths:
-    - '.github/workflows/r2s_lean_minimal.yml'
+      - '.github/workflows/r2s_lean_minimal.yml'
+  schedule:
+    - cron: '10 08 * * *'
 
-    inputs:
-      ssh:
-        description: 'SSH connection to Actions'
-        required: false
-        default: 'false'
+#on:
+#  repository_dispatch:
+#  workflow_dispatch:
+#    paths:
+#    - '.github/workflows/r2s_lean_minimal.yml'
+#
+#    inputs:
+#      ssh:
+#        description: 'SSH connection to Actions'
+#        required: false
+#        default: 'false'
 
 
 jobs:
 
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     if: github.repository == 'qqhpc/NanoPi-R2S-FrendlyWrt-plus'
 
     steps:
